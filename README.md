@@ -54,6 +54,11 @@ make clean      # removes *.o and *.a
 make install PATHLIB=/some/other/lib
 ```
 
+`tests/run.sh` builds the library and runs a smoke test against it (MIGRAD on
+the Rosenbrock function, `tests/rosenbrock.F`). CI
+(`.github/workflows/ci.yml`) runs it on every pull request and push to
+`master`, and fails if gfortran warns while building the library.
+
 ## Consumption by OneFit-Engine
 
 This repo is built and consumed by [fitteia/OneFit-Engine](https://github.com/fitteia/OneFit-Engine)

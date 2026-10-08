@@ -1,0 +1,32 @@
+name: CI
+
+# Every pull request and every push to master: libminuit.a builds with no
+# compiler warnings (this fork's goal, README.md) and MIGRAD finds a known
+# minimum through it (tests/run.sh).
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: gfortran
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends gfortran make
+          gfortran --version | head -1
+
+      - name: Build libminuit.a without warnings
+        run: |
+          make lib 2>&1 | tee build.log
+          if grep -qi warning build.log; then echo "::error::gfortran warnings"; exit 1; fi
+
+      - name: MIGRAD smoke test
+        run: bash tests/run.sh
