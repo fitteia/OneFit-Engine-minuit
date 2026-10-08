@@ -65,7 +65,8 @@ This repo is built and consumed by [fitteia/OneFit-Engine](https://github.com/fi
 as a sibling checkout. OneFit-Engine's `INSTALL` script:
 
 1. Clones this repo to `../minuit` relative to the OneFit-Engine checkout (`git clone
-   https://github.com/fitteia/minuit.git`) if not already present, and otherwise `git pull`s it.
+   https://github.com/fitteia/OneFit-Engine-minuit.git`; the repository was called `minuit`
+   until 2026-10) if not already present, and otherwise `git pull`s it.
 2. Rewrites the `PARAMETER (MNE=..., MNI=...)` line in `minuit/d506cm.inc` to match its own
    `--minuit=N` install option (max number of fit parameters, default `1000`), so `MNE=2*N` and
    `MNI=N`.
