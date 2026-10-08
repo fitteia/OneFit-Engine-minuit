@@ -1,30 +1,44 @@
 name: CI
 
-# Every pull request and every push to master: libminuit.a builds with no
-# compiler warnings (this fork's goal, README.md) and MIGRAD finds a known
-# minimum through it (tests/run.sh).
+# Every pull request and push to master, and once a week: the tests
+# inside Debian containers - trixie (stable, must pass) and forky (testing,
+# the next stable: allowed to fail, an early warning of what the next Debian
+# release will change; the weekly run catches it moving between pushes).
 on:
   pull_request:
   push:
     branches: [master]
+  schedule:
+    - cron: '17 5 * * 1'
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    name: test (debian ${{ matrix.debian }})
+    runs-on: ubuntu-24.04
+    container: debian:${{ matrix.debian }}
+    continue-on-error: ${{ matrix.debian == 'forky' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        debian: [trixie, forky]
     steps:
-      - uses: actions/checkout@v4
-
-      - name: gfortran
+      # git first, so actions/checkout makes a real git checkout
+      - name: Debian packages
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq --no-install-recommends gfortran make
-          gfortran --version | head -1
+          apt-get update -qq
+          apt-get install -y -qq --no-install-recommends git ca-certificates \
+            gfortran make
+
+      - uses: actions/checkout@v4
 
       - name: Build libminuit.a without warnings
         run: |
+          set -o pipefail
+          gfortran --version | head -1
           make lib 2>&1 | tee build.log
           if grep -qi warning build.log; then echo "::error::gfortran warnings"; exit 1; fi
 
