@@ -62,14 +62,14 @@ C
       DATA CWHYXT/'FOR UNKNOWN REASONS                     '/
       DATA JSYSRD,JSYSWR,JSYSSA/5,6,7/
 C                                 . . . . . . . . . . initialize minuit
-      WRITE (JSYSWR,'(1X,75(1H*))')
+      WRITE (JSYSWR,'(1X,75(''*''))')
       CALL MNINIT (JSYSRD,JSYSWR,JSYSSA)
 C                                      . . . . initialize new data block
   100 CONTINUE
-      WRITE (ISYSWR,'(1X,75(1H*))')
+      WRITE (ISYSWR,'(1X,75(''*''))')
       NBLOCK = NBLOCK + 1
       WRITE (ISYSWR,'(26X,A,I4)')  'MINUIT DATA BLOCK NO.',NBLOCK
-      WRITE (ISYSWR,'(1X,75(1H*))')
+      WRITE (ISYSWR,'(1X,75(''*''))')
 C               . . . . . . . . . . .   set parameter lists to undefined
       CALL MNCLER
 C                                             . . . . . . . . read title

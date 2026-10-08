@@ -46,9 +46,9 @@ C                               file is now correctly opened
          IF (CANSWR.EQ.'Y' .OR. CANSWR.EQ.'y') REWIND ISYSSA
       ENDIF
 C                               and rewound if requested
-      WRITE (ISYSSA,'(10HSET TITLE )',ERR=700)
+      WRITE (ISYSSA,'(''SET TITLE '')',ERR=700)
       WRITE (ISYSSA,'(A)')  CTITL
-      WRITE (ISYSSA,'(10HPARAMETERS)')
+      WRITE (ISYSSA,'(''PARAMETERS'')')
       NLINES = 3
 C                                write out parameter values
       DO 200 I= 1, NU
@@ -62,7 +62,7 @@ C         parameter without limits
 C         parameter with limits
   100 CONTINUE
       WRITE (ISYSSA,1001) I,CPNAM(I),U(I),WERR(IINT),ALIM(I),BLIM(I)
- 1001 FORMAT (1X,I5,1H',A10,1H',4E13.5)
+ 1001 FORMAT (1X,I5,'''',A10,'''',4E13.5)
   200 CONTINUE
       WRITE (ISYSSA,'(A)')  ' '
       NLINES = NLINES + 1

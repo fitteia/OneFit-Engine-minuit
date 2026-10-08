@@ -106,7 +106,7 @@ C              if title is 'SET TITLE', skip and read again
       IF (INDEX(CUPBUF,'SET TIT') .EQ. 1)  GO TO 10
       CALL MNSETI(CRDBUF(1:50))
       WRITE (ISYSWR,'(1X,A50)')  CTITL
-      WRITE (ISYSWR,'(1X,78(1H*))')
+      WRITE (ISYSWR,'(1X,78(''*''))')
          LPHEAD = .TRUE.
       IF (IFLGIN .EQ. IFLGDO)  GO TO 900
       IFLGDO = IFLGIN
@@ -137,7 +137,7 @@ C          format error
          ENDIF
       ENDIF
 C                     ICONDP = 2            . . . end parameter requests
-      IF (ISW(5).GE.0 .AND. ISW(6).LT.1) WRITE (ISYSWR,'(4X,75(1H*))')
+      IF (ISW(5).GE.0 .AND. ISW(6).LT.1) WRITE (ISYSWR,'(4X,75(''*''))')
       LPHEAD = .TRUE.
       IF (IFLGIN .EQ. IFLGDO)  GO TO 900
       IFLGDO = IFLGIN
@@ -176,8 +176,8 @@ C                                        . . . . . . . . . . set covar
       IF (ICONDN .EQ. 8) THEN
          ICOMND = ICOMND + 1
          WRITE (ISYSWR,405) ICOMND,CRDBUF(1:50)
-  405    FORMAT (1H ,10(1H*)/' **',I5,' **',A)
-         WRITE (ISYSWR, '(1H ,10(1H*))' )
+  405    FORMAT (' ',10('*')/' **',I5,' **',A)
+         WRITE (ISYSWR, '('' '',10(''*''))' )
          NPAR2 = NPAR*(NPAR+1)/2
          READ (ISYSRD,420,ERR=500,END=45)  (VHMAT(I),I=1,NPAR2)
   420    FORMAT (BN,7E11.4,3X)

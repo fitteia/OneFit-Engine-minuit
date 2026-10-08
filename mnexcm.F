@@ -123,7 +123,7 @@ C           sure that WORD7(1)=0. if LLIST=0
          LNOW = LLIST
          IF (LNOW .GT. 4)  LNOW=4
          WRITE (ISYSWR,25) ICOMND,CWORD(1:LK),(PLIST(I),I=1,LNOW)
-   25    FORMAT (1H ,10(1H*)/' **',I5,' **',A,4G12.4)
+   25    FORMAT (' ',10('*')/' **',I5,' **',A,4G12.4)
          INONDE = 0
          IF (LLIST .GT. LNOW) THEN
            KLL = LLIST
@@ -132,11 +132,11 @@ C           sure that WORD7(1)=0. if LLIST=0
               KLL = MAXP
            ENDIF
            WRITE (CVBLNK,'(I2)') LK
-           C26 = '(11H **********,'//CVBLNK//'X,4G12.4)'
+           C26 = '('' **********'','//CVBLNK//'X,4G12.4)'
            WRITE (ISYSWR,C26) (PLIST(I),I=LNOW+1,KLL)
          ENDIF
-         WRITE (ISYSWR, '(1H ,10(1H*))' )
-         IF (INONDE .GT. 0)  WRITE (ISYSWR, '(1H ,10(1H*),A,I3,A)')
+         WRITE (ISYSWR, '('' '',10(''*''))' )
+         IF (INONDE .GT. 0)  WRITE (ISYSWR, '('' '',10(''*''),A,I3,A)')
      +        '  ERROR: ABOVE CALL TO MNEXCM TRIED TO PASS MORE THAN ',
      +        MAXP,' PARAMETERS.'
         ENDIF
@@ -215,7 +215,7 @@ C                                        . . . . . . . . . .set, show
       GO TO 5000
 C                                        . . . . . . . . . . top of page
   800 CONTINUE
-      WRITE (ISYSWR,'(1H1)')
+      WRITE (ISYSWR,'(''1'')')
       GO TO 5000
 C                                        . . . . . . . . . . fix
   900 LTOFIX = .TRUE.

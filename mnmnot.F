@@ -116,8 +116,8 @@ C
 C                                        . error successfully calculated
       EROS = XMIDCR-UT + AOPT*XDIRCR
       IF (ISW(5) .GT. 1) WRITE (ISYSWR,808)  CSIG,ILAX,CPNAM(ILAX),EROS
-  808 FORMAT (/9X,4HTHE ,A4,  29HTIVE MINOS ERROR OF PARAMETER,I3,   2H
-     +, ,A10,      4H, IS ,E12.4)
+  808 FORMAT (/9X,'THE ',A4,  'TIVE MINOS ERROR OF PARAMETER',I3,
+     +' ,' ,A10,      ', IS' ,E12.4)
       GO TO 480
 C                                        . . . . . . . . failure returns
   440 IF (ISW(5) .GE. 1) WRITE(ISYSWR,807)  CSIG,ILAX,CPNAM(ILAX)
@@ -134,7 +134,7 @@ C                                        . . . . . . . . failure returns
   805 FORMAT (25X,A,'TIVE MINOS ERROR NOT CALCULATED FOR PARAMETER',I4/)
       EROS = 0.
 C
-  480 IF (ISW(5) .GT. 1) WRITE (ISYSWR,'(5X, 74(1H*))')
+  480 IF (ISW(5) .GT. 1) WRITE (ISYSWR,'(5X, 74(''*''))')
       IF (SIG .LT. ZERO)  THEN
          ERN(IT) = EROS
          IF (ILAX2.GT.0 .AND. ILAX2.LE.NU)  VAL2MI = U(ILAX2)

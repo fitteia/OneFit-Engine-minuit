@@ -43,8 +43,8 @@ C     NCOEF is number of coeff. that fit on one line, not to exceed 20
       NCOEF = MIN(NCOEF,20)
       NPARM = MIN(NPAR,NCOEF)
       WRITE (ISYSWR, 150) (NEXOFI(ID),ID=1,NPARM)
-  150 FORMAT (/36H PARAMETER  CORRELATION COEFFICIENTS  /
-     +         18H       NO.  GLOBAL   ,20I6)
+  150 FORMAT (/' PARAMETER  CORRELATION COEFFICIENTS'  /
+     +         '       NO.  GLOBAL'   ,20I6)
       DO 200 I= 1, NPAR
          IX = NEXOFI(I)
          NDI = I*(I+1)/2

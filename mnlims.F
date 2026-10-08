@@ -90,7 +90,7 @@ C                                       see if parameter was fixed
 C                                       remove limits
       IF (NVARL(I2) .NE. 1)  THEN
          IF (ISW(5) .GT. 0)  WRITE (ISYSWR,134)  I2
-  134    FORMAT (30H LIMITS REMOVED FROM PARAMETER  ,I4)
+  134    FORMAT (' LIMITS REMOVED FROM PARAMETER'  ,I4)
          CSTATU = 'NEW LIMITS'
          IF (KINT .LE. 0)  THEN
             GSTEPS(IFX) = ABS(GSTEPS(IFX))
@@ -111,7 +111,7 @@ C                                        put on limits
       BLIM(I2) = MAX(WORD7(2),WORD7(3))
       NVARL(I2) = 4
       IF (ISW(5) .GT. 0)   WRITE (ISYSWR,237)  I2,ALIM(I2),BLIM(I2)
-  237 FORMAT (10H PARAMETER ,I3, 14H LIMITS SET TO  ,2G15.5)
+  237 FORMAT (' PARAMETER' ,I3, ' LIMITS SET TO'  ,2G15.5)
       CSTATU = 'NEW LIMITS'
       IF (KINT .LE. 0)  THEN
          GSTEPS(IFX) = -0.1

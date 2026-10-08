@@ -81,20 +81,20 @@ C                                      . . .print heading
       IF (WK .GT. ZERO)  GO TO 122
 C                                        . . .constant parameter . . . .
       IF (ISW(5) .GE. 0)  WRITE (ISYSWR, 82)  K,CNAMK,UK
-   82 FORMAT (1X,I5,1X,1H',A10,1H',1X,G13.5, '  constant')
+   82 FORMAT (1X,I5,1X,'''',A10,'''',1X,G13.5, '  constant')
       NVL = 0
       GO TO 200
   122 IF (A.EQ.ZERO .AND. B.EQ.ZERO) THEN
 C                                      variable parameter without limits
       NVL = 1
       IF (ISW(5) .GE. 0)  WRITE (ISYSWR, 127)  K,CNAMK,UK,WK
-  127 FORMAT (1X,I5,1X,1H',A10,1H',1X,2G13.5, '     no limits')
+  127 FORMAT (1X,I5,1X,'''',A10,'''',1X,2G13.5, '     no limits')
       ELSE
 C                                         variable parameter with limits
       NVL = 4
       LNOLIM = .FALSE.
       IF (ISW(5) .GE. 0)  WRITE (ISYSWR, 132)  K,CNAMK,UK,WK,A,B
-  132 FORMAT(1X,I5,1X,1H',A10,1H',1X,2G13.5,2X,2G13.5)
+  132 FORMAT(1X,I5,1X,'''',A10,'''',1X,2G13.5,2X,2G13.5)
       ENDIF
 C                             . . request for another variable parameter
       KINT = KINT + 1

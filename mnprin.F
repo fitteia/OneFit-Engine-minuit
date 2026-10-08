@@ -177,7 +177,7 @@ C              variable parameter.
 C               check if parameter is at limit
       IF (NVARL(I) .LE. 1 .OR. IKODE .EQ. 3)  GO TO 200
       IF (ABS(COS(X(L))) .LT. 0.001)  WRITE (ISYSWR,1004)
- 1004 FORMAT (1H ,32X,42HWARNING -   - ABOVE PARAMETER IS AT LIMIT.)
+ 1004 FORMAT (' ',32X,'WARNING -   - ABOVE PARAMETER IS AT LIMIT.')
       GO TO 200
 C
 C                                print constant or fixed parameter.

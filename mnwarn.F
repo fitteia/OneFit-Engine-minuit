@@ -86,7 +86,7 @@ C             'SHO WARnings', ask if any suppressed mess in buffer
      +           NFCWAR(IC,ITYP),ORIGIN(IC,ITYP),WARMES(IC,ITYP)
  300       CONTINUE
          NWRMES(ITYP) = 0
-         WRITE (ISYSWR,'(1H )')
+         WRITE (ISYSWR,'('' '')')
       ENDIF
       RETURN
       END

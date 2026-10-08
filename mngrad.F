@@ -48,7 +48,7 @@ C                    get MINUIT-calculated first derivatives
       ISTRAT = ISTSAV
       WRITE (ISYSWR,51)
    51 FORMAT(/' CHECK OF GRADIENT CALCULATION IN FCN'/12X,'PARAMETER',
-     + 6X,9HG(IN FCN) ,3X,9HG(MINUIT) ,2X,'DG(MINUIT)',3X,9HAGREEMENT)
+     + 6X,'G(IN FCN)' ,3X,'G(MINUIT)' ,2X,'DG(MINUIT)',3X,'AGREEMENT')
       ISW(3) = 1
       LNONE = .FALSE.
       DO 100 LC = 1, NPAR
